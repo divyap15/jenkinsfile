@@ -24,7 +24,7 @@ pipeline {
                                  script {
 				    if(env.BRANCH == 'origin/master') 
                                  {						  
-                                      sh 'echo "This is a TESTING1 stage"'
+                                      sh 'echo "This is a TESTING2 stage"'
                                       sh 'sleep 2'
 				  }
 				 else {
