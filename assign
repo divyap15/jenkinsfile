@@ -1,5 +1,5 @@
 pipeline {
-    agent none {
+    agent any {
          environment {
           BRANCH ='master'
           GIT_REPO ='https://github.com/divyap15/jenkinsfile.git'
@@ -15,14 +15,9 @@ pipeline {
                         sh 'sleep 5'
                       }
                      }
-                   stage('TESTING2') {
-                   steps {
-                        sh '''
-                            echo "This is a TESTING2 stage"
-                            sleep 5
-                        '''
-                    }
+                   
                 }
              }
+         }
          }
 
