@@ -14,7 +14,7 @@ pipeline {
                           sh 'sleep 2'
 			}
 			else {
-		        error("Build failed because of this and that")
+		        error("Build failed")
                              }
                      }
                   }
@@ -28,7 +28,7 @@ pipeline {
                                       sh 'sleep 2'
 				  }
 				 else {
-				error("Build failed because of this and that")
+				error("Build failed")
                        }
                        
 			  }
