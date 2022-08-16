@@ -1,0 +1,38 @@
+pipeline {
+     agent any
+       environment {
+        BRANCH = "$GIT_BRANCH"
+	    GIT_REPO = 'https://github.com/divyap15/jenkinsfile.git'
+    }
+       stages {
+                   stage('TESTING1') {
+                      steps {
+                       script {
+                          if(env.BRANCH == 'origin/master') 
+                        {						  
+                          sh 'echo "This is a TESTING1 stage"'
+                          sh 'sleep 3'
+			}
+			else {
+		        error("Build failed because of this and that")
+                             }
+                     }
+                  }
+		 }
+		       stage('TESTING2') {
+                            steps {
+                                 script {
+				    if(env.BRANCH == 'origin/master') 
+                                 {						  
+                                      sh 'echo "This is a TESTING1 stage"'
+                                      sh 'sleep 3'
+				  }
+				 else {
+				error("Build failed because of this and that")
+                       }
+                       
+			  }
+                        }
+                }
+           }     
+        }
