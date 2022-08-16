@@ -1,46 +1,40 @@
 pipeline {
-    agent any
-    parameters {
-        string(name: 'BRANCH', description: 'Enter the branch to build', defaultValue: '')
-                }
-    environment {
-                GIT_REPO = "https://github.com/divyap15/jenkinsfile.git"
-                }
-        stages {
-        stage ("Test1") {
-            steps {
-                script {
-                    if(params.BRANCH == 'master')
-                    {
-                        git branch: params.BRANCH, url: env.GIT_REPO
-                        sh '''
-                            #!/bin/bash 
-                            pwd 
-                            ls
-                            echo "This is a test1 stage"                  
-                        '''
-                    } else { 
-                        echo "Skipping test1 stage ....."    
-                    }  
-
-                }
-            }
-        }
-
-        stage ("Test2") {
-            steps {
-                script {
-                    if(params.BRANCH == 'master')
-                    {
-                        git branch: params.BRANCH, url: env.GIT_REPO
-                        sh 'echo "This is a test2 stage"'   
-                        
-                    } else { 
-                        echo "This is not master branch "    
-                    }  
+     agent any
+       environment {
+        BRANCH = "$GIT_BRANCH"
+	    GIT_REPO = 'https://github.com/divyap15/jenkinsfile.git'
+    }
+       stages {
+                   stage('TESTING1') {
+                      steps {
+                       script {
+                          if(env.BRANCH == 'origin/master') 
+                        {						  
+                          sh 'echo "This is a TESTING1 stage"'
+                          sh 'sleep 3'
+			}
+			else {
+		        error("Build failed because of this and that")
+                             }
                      }
-            }
+                  }
+		 }
+		       stage('TESTING2') {
+                            steps {
+                                 script {
+				    if(env.BRANCH == 'origin/master') 
+                                 {						  
+                                      sh 'echo "This is a TESTING1 stage"'
+                                      sh 'sleep 3'
+				  }
+				 else {
+				error("Build failed because of this and that")
+                       }
+                       
+			  }
+                        }
+                }
+           }     
         }
-     }
-   }
-
+    }
+}
