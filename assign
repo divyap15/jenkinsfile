@@ -1,0 +1,22 @@
+pipeline {
+    agent none
+    pipeline {
+            stages {
+            agent { label master }
+                 stage('TESTING1') {
+                 steps {
+                        sh 'echo "This is a TESTING1 stage"'
+                        sh 'sleep 5'
+                      }
+                     }
+                   stage('TESTING2') {
+                   steps {
+                        sh '''
+                            echo "This is a TESTING2 stage"
+                            sleep 5
+                        '''
+                    }
+                }
+             }
+         }
+
