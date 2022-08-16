@@ -1,11 +1,17 @@
 pipeline {
-    agent none
-    pipeline {
+    agent none {
+         environment {
+          BRANCH ='master'
+          GIT_REPO ='https://github.com/divyap15/jenkinsfile.git'
             stages {
-            agent { label master }
                  stage('TESTING1') {
                  steps {
-                        sh 'echo "This is a TESTING1 stage"'
+                        git branch: env.BRANCH, url: env.GIT_REPO
+                        if [ git branch -eq master ]
+                        then 
+                        sh 'echo "TESTING is running on master"'
+                        else 
+                        sh 'echo "BRANCH is not a master"
                         sh 'sleep 5'
                       }
                      }
