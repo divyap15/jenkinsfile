@@ -6,8 +6,7 @@ pipeline {
     environment {
                 GIT_REPO = "https://github.com/divyap15/jenkinsfile.git"
                 }
-    
-     stages {
+        stages {
         stage ("Test1") {
             steps {
                 script {
@@ -18,8 +17,7 @@ pipeline {
                             #!/bin/bash 
                             pwd 
                             ls
-                            echo "This is a test1 stage"
-                            
+                            echo "This is a test1 stage"                  
                         '''
                     } else { 
                         echo "Skipping test1 stage ....."    
@@ -40,11 +38,9 @@ pipeline {
                     } else { 
                         echo "This is not master branch "    
                     }  
-                    
-                }
+                     }
             }
         }
+     }
+   }
 
-
-     }  
-}
