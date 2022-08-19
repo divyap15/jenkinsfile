@@ -10,7 +10,7 @@ piepline {
                 sh "echo STEGE-1 executes if branch is master"
             }
         }
-        stage('STAGE-2'){
+        stage('STAGE-2') {
             when {
                 branch 'master'
             }
