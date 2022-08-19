@@ -5,16 +5,15 @@ piepline {
             when {
                 branch 'master'
             }
-            steps{
+            steps {
                 sh "echo STEGE-2 executes if branch is master"
             }
         }
-
-        stage('STAGE-2'){
+         stage('STAGE-2') {
             when {
                 branch 'master'
             }
-            steps{
+            steps {
                 sh "echo STEGE-2 executes if branch is master"
             }
         }
