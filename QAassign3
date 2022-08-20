@@ -6,14 +6,14 @@ pipeline {
   catchError(buildResult: 'SUCCESS' , stageResult: 'FAILURE') {
       stage ('stage1') {
 	steps{
-	  sh 'this is stage1'
-	  sh 'exit 1'
+	  echo "this is stage1"
+	  exi1
 	  }
 	  }
 	stage ('stage2') {
 	steps { 
 	    echo "this is stage2 "
-	   sh 'exit1'
+	   exit1
 	   }
 	  }
 	  stage ('stage3') {
