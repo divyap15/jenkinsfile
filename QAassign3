@@ -3,28 +3,28 @@ pipeline {
  stages {
       stage ('building') {
 	parallel {
-        catchError(buildResult: 'SUCCESS' , stageResult: 'FAILURE') {
-	stage ('stage1')
-        steps{
-	  echo "this is stage1"
-	  exi1
+	 stage ('stage1')
+          steps{
+	   catchError(buildResult: 'SUCCESS' , stageResult: 'FAILURE') {
+	    echo "this is stage1"
+	      exi1
 	  }
 	  }
-	stage ('stage2') {
-	steps { 
-	   echo "this is stage2 "
+	    stage ('stage2') {
+	      steps { 
+	         echo "this is stage2 "
 	   }
 	  }
 	  }
 	 } 
-	  stage ('stage3') {
-         steps {
-	  sh '''
-            #!/bin/bash
-             pwd
-             ls
-         echo "this is stage3"
-	 '''
+	       stage ('stage3') {
+                   steps {
+	            sh '''
+                      #!/bin/bash
+                       pwd
+                        ls
+                      echo "this is stage3"
+	                '''
        }
       }
     }
