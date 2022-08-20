@@ -1,3 +1,5 @@
+
+def boolean stage_result = true
 pipeline {
  agent any 
  stages {
@@ -7,7 +9,8 @@ pipeline {
           steps{
 	   catchError(buildResult: 'SUCCESS' , stageResult: 'FAILURE') {
 	    echo "this is stage1"
-	      exi1
+	      sh "exit1"
+	      script { stage_result = true }
 	  }
 	  }
 	    stage ('stage2') {
