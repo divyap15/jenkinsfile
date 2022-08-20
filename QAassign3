@@ -17,11 +17,13 @@ pipeline {
 	   }
 	  }
 	  stage ('stage3') {
-         steps { 
+         steps {
+	  sh '''
             #!/bin/bash
              pwd
              ls
          echo "this is stage3"
+	 '''
        }
       }
     }
