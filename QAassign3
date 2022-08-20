@@ -3,8 +3,8 @@ pipeline {
  stages{
   parallel {
         }
-  catchError ( buildresult:'SUCCESS' stageResult:' FAILUREstage ('stage1'){
-    stage ('stage1') {
+  catchError ( buildResult:'SUCCESS' stageResult:'FAILUREstage') {
+      stage ('stage1') {
 	steps{
 	  sh 'this is stage1'
 	  sh 'exit 1'
