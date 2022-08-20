@@ -1,0 +1,29 @@
+pipeline {
+ agent any {
+ stages{
+  parallel {
+        }
+  catchError ( buildresult:'SUCCESS' stageResult:' FAILUREstage ('stage1'){
+    stage ('stage1') {
+	steps{
+	  sh 'this is stage1'
+	  sh 'exit 1'
+	  }
+	  }
+	stage ('stage2') {
+	steps { 
+	    echo "this is stage2 "
+	   sh 'exit1'
+	   }
+	  }
+	  stage ('stage3') {
+         steps { 
+            #!/bin/bash
+             pwd
+             ls
+         echo "this is stage3"
+       }
+      }
+    }
+   }
+}   
