@@ -3,13 +3,12 @@ def boolean stage_result = true
 pipeline {
  agent any 
  stages {
-      stage ('building') {
+      stage ('dev') {
 	parallel {
 	 stage ('stage1')
           steps{
 	   catchError(buildResult: 'SUCCESS' , stageResult: 'FAILURE') {
 	    echo "this is stage1"
-	      sh "exit1"
 	      script { stage_result = true }
 	  }
 	  }
